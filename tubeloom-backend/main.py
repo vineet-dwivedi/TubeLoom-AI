@@ -1,9 +1,30 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, HttpUrl
-from ai_service import genrate_summary, VideoSummaryResponse
+from fastapi.middleware.cors import CORSMiddleware
+
+# Services
+from ai_service import generate_summary, VideoSummaryResponse
 from youtube_service import extract_video_id, fetch_transcript_text
 
+# FastAPI Integration
 app = FastAPI(title="TubeLoom AI")
+
+# Allowed origins
+origins = {
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+}
+
+# CORS Middleware Config
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"], # GET, POST, PUT, DELETE, etc.
+    allow_headers=["*"], # Content-Type, Authorization, etc
+)
 
 class VideoRequest(BaseModel):
     url: HttpUrl
@@ -24,8 +45,8 @@ async def process_video(request: VideoRequest):
         full_transcript = fetch_transcript_text(video_id)
 
         #Genrate summary from AI service
-        summary_result = genrate_summary(full_transcript)
-        
+        summary_result = generate_summary(full_transcript)
+
         return summary_result
     
     except Exception as e:
