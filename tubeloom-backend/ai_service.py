@@ -22,4 +22,22 @@ class VideoSummaryResponse(BaseModel):
     key_topics: List[str]
     actionable_takeaway: List[str]
 
-#
+#AI Functionality
+def genrate_summary(transcript: str) -> VideoSummaryResponse:
+    prompt = f"""
+    You are an expert AI notebook assistant, Analyze the following YouTube video transcript and extract structured notes, Return the output matching the requested schema.
+
+    Transcript:
+    {transcript[:12000]}
+    """
+
+    response = client.models.generate_content(
+        model='gemini-2.5-flash',
+        contents=prompt,
+        config={
+            'response_mime_type': 'application/json',
+            'response_schema': VideoSummaryResponse
+        }
+    )
+
+    return VideoSummaryResponse.model_validate_json(response.text)
