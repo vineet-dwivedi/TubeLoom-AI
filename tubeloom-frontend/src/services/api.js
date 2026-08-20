@@ -7,12 +7,17 @@ const API = axios.create({
     },
 });
 
-export const processVideo = async(videoUrl) => {
-    const response = await API.post('/api/process-video', {url: videoUrl})
+export const processVideo = async(videoUrl, googleId = null) => {
+    const response = await API.post('/api/process-video', {url: videoUrl, google_id: googleId})
     return response.data;
 }
 
 export const askQuestion = async(videoUrl, question) => {
     const response = await API.post('/api/chat', {url: videoUrl, question: question});
+    return response.data;
+}
+
+export const getUserHistory = async (googleId) => {
+    const response = await API.get(`/api/hiistory/${googleId}`);
     return response.data;
 }

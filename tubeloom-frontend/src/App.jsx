@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { processVideo, askQuestion } from "./services/api";
-import { authenticateWithGoogle, saveUserSession, getUserSession, clearUserSession } from "./services/authService";
+import { processVideo, askQuestion, getUserHistory } from "./services/api.js";
+import { authenticateWithGoogle, saveUserSession, getUserSession, clearUserSession } from "./services/authService.js";
 
 
 import Header from "./components/Header";
