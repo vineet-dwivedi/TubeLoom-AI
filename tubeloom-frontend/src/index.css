@@ -81,6 +81,9 @@
 html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  -webkit-scrollbar: none;
+  scrollbar-width: none;
 }
 
 body {
@@ -93,12 +96,15 @@ body {
   font-size: 15px;
   line-height: 1.6;
   transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -117,4 +123,6 @@ button {
 
 input {
   font-family: var(--font-sans);
+  /* Prevent iOS auto-zoom on focus */
+  font-size: max(16px, 1em);
 }

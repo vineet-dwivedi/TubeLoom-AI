@@ -16,6 +16,10 @@
     color: var(--text);
     margin-bottom: 12px;
     animation: fadeUp 0.4s 0.1s ease both;
+
+    @media (max-width: 480px) {
+      font-size: 16px;
+    }
   }
 
   .summary-text {

@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
+
 const API = axios.create({
-    baseURL: 'http://127.0.0.1:8000',
+    baseURL: API_BASE_URL,
     headers: {
         'Content-Type': 'application/json'
     },
@@ -18,6 +20,11 @@ export const askQuestion = async(videoUrl, question) => {
 }
 
 export const getUserHistory = async (googleId) => {
-    const response = await API.get(`/api/hiistory/${googleId}`);
+    const response = await API.get(`/api/history/${googleId}`);
+    return response.data;
+}
+
+export const deleteHistoryItem = async (googleId, itemId) => {
+    const response = await API.delete(`/api/history/${googleId}/${itemId}`);
     return response.data;
 }

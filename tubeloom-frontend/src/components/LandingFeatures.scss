@@ -25,6 +25,10 @@
   transition: background 0.2s ease, padding-left 0.22s ease, box-shadow 0.2s ease;
   cursor: default;
 
+  @media (max-width: 480px) {
+    padding: 14px 16px;
+    gap: 12px;
+  }
   &:last-child {
     border-bottom: none;
   }

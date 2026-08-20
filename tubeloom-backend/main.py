@@ -1,10 +1,14 @@
+import os
 from typing import Optional
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, HttpUrl
 
 from auth_service import verify_google_id_token
-from history_service import save_video_history, get_user_history
+from history_service import save_video_history, get_user_history, delete_user_history_item
 from youtube_service import extract_video_id, fetch_transcript_text
 from ai_service import (
     generate_summary, 
@@ -23,7 +27,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -84,6 +88,15 @@ async def process_video(request: VideoRequest):
 @app.get("/api/history/{google_id}")
 async def fetch_history(google_id: str):
     return await get_user_history(google_id)
+
+
+# 5. Delete History Endpoint
+@app.delete("/api/history/{google_id}/{item_id}")
+async def remove_history_item(google_id: str, item_id: str):
+    success = await delete_user_history_item(google_id, item_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="History item not found")
+    return {"message": "History item deleted successfully"}
 
 
 # 5. Interactive Chat Endpoint

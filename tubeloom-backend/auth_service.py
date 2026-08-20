@@ -1,9 +1,12 @@
 import os
 from datetime import datetime, timezone
+from dotenv import load_dotenv
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
 from fastapi import HTTPException
 from database import user_collection
+
+load_dotenv()
 
 # Production Client ID from .env
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
@@ -51,6 +54,7 @@ async def verify_google_id_token(token: str) -> dict:
     except HTTPException:
         raise
     except Exception as e:
+        print(f"[AUTH ERROR] Token verification failed: {e}")
         raise HTTPException(
             status_code=401,
             detail=f"Invalid or expired Google Token: {str(e)}",
