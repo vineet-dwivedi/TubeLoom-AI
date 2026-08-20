@@ -189,6 +189,11 @@ export default function App() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     try { localStorage.setItem('tubeloom-theme', theme); } catch {}
+
+    const faviconLink = document.querySelector("link[rel='icon']");
+    if (faviconLink) {
+      faviconLink.href = theme === 'dark' ? '/favicon-dark.svg' : '/favicon-light.svg';
+    }
   }, [theme]);
 
   const handleToggleTheme = (e) => {
