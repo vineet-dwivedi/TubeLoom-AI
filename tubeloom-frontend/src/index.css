@@ -1,111 +1,120 @@
+/* ============================================================
+   TubeLoom — Global Tokens + Reset (index.css)
+   ============================================================ */
+
+/* ── Light (default) ── */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --bg:         #F7F6F2;
+  --surface:    #FFFFFF;
+  --surface-2:  #EEEDE9;
+  --border:     #E2E1DC;
+  --text:       #111110;
+  --text-muted: #78776E;
+  --text-faint: #B5B3AC;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --glow-ambient: rgba(0, 0, 0, 0.04);
+  --glow-spotlight: radial-gradient(ellipse 70% 45% at 50% 0%, rgba(220, 215, 200, 0.35), transparent 70%);
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  --radius: 4px;
+
+  color-scheme: light;
+}
+
+/* ── Dark (system preference or JS toggle) ── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:         #0E0E0D;
+    --surface:    #161614;
+    --surface-2:  #1E1E1C;
+    --border:     #2C2C29;
+    --text:       #EEEEE8;
+    --text-muted: #78776E;
+    --text-faint: #3C3C39;
+
+    --glow-ambient: rgba(255, 255, 255, 0.05);
+    --glow-spotlight: radial-gradient(ellipse 65% 40% at 50% 0%, rgba(255, 255, 255, 0.06), transparent 75%);
+
+    color-scheme: dark;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+[data-theme="dark"] {
+  --bg:         #0E0E0D;
+  --surface:    #161614;
+  --surface-2:  #1E1E1C;
+  --border:     #2C2C29;
+  --text:       #EEEEE8;
+  --text-muted: #78776E;
+  --text-faint: #3C3C39;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  --glow-ambient: rgba(255, 255, 255, 0.05);
+  --glow-spotlight: radial-gradient(ellipse 65% 40% at 50% 0%, rgba(255, 255, 255, 0.06), transparent 75%);
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg:         #F7F6F2;
+  --surface:    #FFFFFF;
+  --surface-2:  #EEEDE9;
+  --border:     #E2E1DC;
+  --text:       #111110;
+  --text-muted: #78776E;
+  --text-faint: #B5B3AC;
+
+  --glow-ambient: rgba(0, 0, 0, 0.04);
+  --glow-spotlight: radial-gradient(ellipse 70% 45% at 50% 0%, rgba(220, 215, 200, 0.35), transparent 70%);
+
+  color-scheme: light;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  background-image: var(--glow-spotlight);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
+h1, h2, h3 {
+  font-family: var(--font-sans);
   font-weight: 500;
-  color: var(--text-h);
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+p { color: var(--text-muted); }
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+input {
+  font-family: var(--font-sans);
 }

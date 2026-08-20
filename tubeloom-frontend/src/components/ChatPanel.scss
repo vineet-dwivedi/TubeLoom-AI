@@ -1,0 +1,183 @@
+/* ── ChatPanel Component Styles ── */
+
+.chat-section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  h3 {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    margin-bottom: 18px;
+  }
+}
+
+.chat-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--text-muted) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  box-shadow: 0 0 12px var(--text-muted);
+  transition: opacity 0.35s ease;
+}
+
+.chat-section:has(.chat-input-form button:disabled)::before {
+  opacity: 1;
+  animation: shimmer 1.2s linear infinite;
+}
+
+.chat-input-form {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: var(--surface);
+  box-shadow: 0 2px 12px var(--glow-ambient);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:focus-within {
+    border-color: var(--text-muted);
+    box-shadow: 0 0 20px -3px var(--glow-ambient), 0 0 0 1px var(--text-muted);
+    transform: translateY(-1px);
+  }
+
+  input[type="text"] {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 11px 15px;
+    font-size: 13.5px;
+    color: var(--text);
+    outline: none;
+    min-width: 0;
+    transition: color 0.15s ease;
+
+    &::placeholder {
+      color: var(--text-faint);
+      transition: opacity 0.2s ease;
+    }
+
+    &:focus::placeholder {
+      opacity: 0.4;
+    }
+  }
+
+  button[type="submit"] {
+    border: none;
+    border-left: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 11px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.22s ease, color 0.22s ease, letter-spacing 0.22s ease;
+
+    &:hover:not(:disabled) {
+      background: var(--text);
+      color: var(--bg);
+      letter-spacing: 0.06em;
+    }
+
+    &:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.chat-history {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  max-height: 380px;
+  padding: 6px 3px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+
+  &::-webkit-scrollbar { width: 3px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+}
+
+.empty-chat {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  text-align: center;
+  padding: 36px 0;
+  animation: fadeIn 0.4s ease both;
+}
+
+.chat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeUp 0.35s ease both;
+}
+
+.chat-card .chat-q {
+  display: block;
+  align-self: flex-end;
+  max-width: 84%;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 13.5px;
+  line-height: 1.6;
+  padding: 11px 16px;
+  border-radius: var(--radius) var(--radius) 2px var(--radius);
+  word-break: break-word;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  animation: slideInRight 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  strong { display: none; }
+}
+
+.chat-card .chat-a {
+  display: block;
+  align-self: flex-start;
+  max-width: 94%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--text-muted);
+  padding: 13px 16px;
+  border-radius: var(--radius) var(--radius) var(--radius) 2px;
+  word-break: break-word;
+  box-shadow: 0 4px 20px var(--glow-ambient);
+  animation: slideInLeft 0.35s 0.06s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+
+  &:hover {
+    border-color: var(--text-muted);
+    border-left-color: var(--text);
+    box-shadow: 0 6px 24px var(--glow-ambient), 0 0 15px rgba(255, 255, 255, 0.03);
+    transform: translateY(-1px);
+  }
+}

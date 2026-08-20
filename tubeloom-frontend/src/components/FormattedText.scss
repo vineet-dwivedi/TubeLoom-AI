@@ -1,0 +1,58 @@
+/* FormattedText.scss — styles for parsed AI response blocks */
+
+.fmt-response {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  animation: fadeIn 0.35s ease both;
+}
+
+/* Plain paragraph */
+.fmt-para {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin: 0;
+
+  strong {
+    font-weight: 600;
+    color: var(--text);
+    font-size: inherit;
+    display: inline;
+  }
+}
+
+/* Bullet list */
+.fmt-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fmt-list li {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  padding-left: 14px;
+  position: relative;
+
+  &::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    top: 1px;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--text);
+    display: inline;
+  }
+}

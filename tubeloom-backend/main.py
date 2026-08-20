@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, HttpUrl
+from auth_service import verify_google_id_token
 
 from youtube_service import extract_video_id, fetch_transcript_text
 from ai_service import (
@@ -14,7 +15,6 @@ app = FastAPI(title="TubeLoom AI")
 
 # Allowed origins for local React dev servers
 origins = [
-    "http://localhost:3000",   # Next.js / CRA
     "http://localhost:5173",   # Vite React
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
@@ -29,6 +29,13 @@ app.add_middleware(
     allow_headers=["*"],         # Content-Type, Authorization, etc.
 )
 
+# Authentication
+class GoogleAuthRequest(BaseModel):
+    credential: str
+
+@app.post("/api/auth/google")
+async def google_auth(request: GoogleAuthRequest):
+    return verify_google_id_token(request.credential)
 
 class VideoRequest(BaseModel):
     url: HttpUrl
