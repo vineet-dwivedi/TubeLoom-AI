@@ -81,7 +81,7 @@ export default function Auth({ user, onGoogleSuccess, onLogout }) {
             theme="outline"
             size="medium"
             shape="pill"
-            text="signin_with"
+            text="signin"
           />
         </div>
       )}
