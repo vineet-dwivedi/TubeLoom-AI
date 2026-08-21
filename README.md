@@ -4,11 +4,11 @@
 
 ### *Cinematic Video Intelligence & Automated Note-Taking System*
 
-[![React](https://img.shields.io/badge/Frontend-React_19_%7C_Vite_8-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
-[![FastAPI](https://img.shields.io/badge/Backend-FastAPI_Python-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
-[![Gemini AI](https://img.shields.io/badge/AI_Engine-Gemini_3.6_Flash-8E44AD?style=for-the-badge&logo=google)](https://ai.google.dev)
-[![MongoDB](https://img.shields.io/badge/Database-MongoDB_Atlas-47A248?style=for-the-badge&logo=mongodb)](https://www.mongodb.com)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+<img src="https://skillicons.dev/icons?i=react" alt="react" />
+<img src="https://skillicons.dev/icons?i=fastapi" alt="fastapi" />
+<img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlegemini.svg" width="48" height="48" alt="gemini" />
+<img src="https://skillicons.dev/icons?i=mongodb" alt="mongodb" />
+<img src="https://skillicons.dev/icons?i=python" alt="python" />
 
 </div>
 
@@ -248,6 +248,6 @@ Open `http://localhost:5173` in your browser.
 
 <div align="center">
 
-Crafted with precision for **TubeLoom AI**
+Crafted with precision for **TubeLoom AI By Vineet Dwivedi** 
 
 </div>
