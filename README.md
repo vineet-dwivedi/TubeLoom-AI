@@ -2,7 +2,7 @@
 
 # 🎬 TubeLoom AI
 
-### *Cinematic Video Intelligence & Automated Note-Taking System*
+### *AI Video Intelligence & Automated Note-Taking System*
 
 <img src="https://skillicons.dev/icons?i=react" alt="react" />
 <img src="https://skillicons.dev/icons?i=fastapi" alt="fastapi" />
