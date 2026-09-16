@@ -26,4 +26,11 @@ async def delete_user_history_item(google_id: str, item_id: str) -> bool:
         result = await history_collection.delete_one({"_id": ObjectId(item_id), "google_id": google_id})
         return result.deleted_count > 0
     except Exception:
-        return False
+        return False
+
+async def update_user_notes(history_id: str, notes: str):
+    await history_collection.update_one(
+        {"_id": ObjectId(history_id)},
+        {"$set": {"user_notes": notes}}
+    )
+    return {"status": "success", "message": "User notes updated successfully."}

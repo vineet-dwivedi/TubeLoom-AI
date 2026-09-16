@@ -1,8 +1,14 @@
 <div align="center">
 
-# 🎬 TubeLoom AI
+<img src="./tubeloom-frontend/public/favicon.svg" width="48" height="48" alt="TubeLoom AI Logo" />
 
+<<<<<<< HEAD
 ### *AI Video Intelligence & Automated Note-Taking System*
+=======
+# TubeLoom AI
+
+### Cinematic Video Intelligence & Automated Note-Taking System
+>>>>>>> eb4123f (New ft. addon)
 
 <img src="https://skillicons.dev/icons?i=react" alt="react" />
 <img src="https://skillicons.dev/icons?i=fastapi" alt="fastapi" />
@@ -14,15 +20,15 @@
 
 ---
 
-## 📌 Overview
+## Overview
 
-**TubeLoom AI** is a full-stack, AI-powered video intelligence workspace. It transforms long YouTube videos into structured executive summaries, key topics, actionable takeaways, and interactive Q&A chat in real time.
+TubeLoom AI is a full-stack video intelligence platform designed to extract, analyze, and synthesize YouTube video transcripts into structured executive notes, key topics, actionable takeaways, and interactive Q&A chat.
 
-Built with **React 19**, **Vite**, **FastAPI**, **Google Gemini 3.6 Flash**, and **MongoDB Atlas**, TubeLoom AI features a dark/light design system with view transitions, Google OAuth single sign-on, a sliding history drawer with thumbnail previews, and browser back-button routing.
+The application combines a high-performance React 19 frontend with a FastAPI serverless-ready backend, powered by Google Gemini 3.6 Flash and MongoDB Atlas. It includes real-time dark/light theme switching with adaptive SVG favicons, Google OAuth authentication, a sliding history drawer, and native browser popstate navigation.
 
 ---
 
-## 📐 System Architecture
+## System Architecture
 
 ```mermaid
 flowchart TD
@@ -64,68 +70,68 @@ flowchart TD
 
 ---
 
-## 📂 File Directory Structure
+## Project Structure
 
 ```text
 TubeLoom-AI/
-├── README.md                      # Complete System Documentation
-├── package.json                   # Workspace Root Config
-├── tubeloom-backend/              # FastAPI Python Backend
-│   ├── .env                       # Backend Environment Variables
+├── README.md                      # Project Documentation
+├── package.json                   # Root Configuration
+├── tubeloom-backend/              # Python FastAPI Application
+│   ├── .env                       # Environment Variables (Git-ignored)
 │   ├── .env.example               # Backend Environment Template
 │   ├── requirements.txt           # Python Package Dependencies
-│   ├── main.py                    # FastAPI App Entrypoint & Middleware
-│   ├── auth_service.py            # Google OAuth ID Token Verification & User Upsert
-│   ├── ai_service.py              # Gemini 3.6 Flash Summarization & Chat RAG
-│   ├── youtube_service.py         # YouTube Video ID Parser & Transcript Fetcher
-│   ├── history_service.py         # MongoDB History CRUD Service
-│   └── database.py                # Async Motor MongoDB Client & Collections
-└── tubeloom-frontend/             # React 19 + Vite Frontend
-    ├── vercel.json                # Vercel SPA Routing Rewrite Config
-    ├── package.json               # Frontend Dependencies & Scripts
-    ├── vite.config.js             # Vite Build Settings
-    ├── index.html                 # Main HTML Template & Fonts
+│   ├── main.py                    # API Entrypoint, CORS & Route Registrations
+│   ├── auth_service.py            # OAuth ID Token Verification & MongoDB Upsert
+│   ├── ai_service.py              # Gemini 3.6 Flash Prompt Synthesis & Q&A RAG
+│   ├── youtube_service.py         # YouTube URL Parser & Transcript Extractor
+│   ├── history_service.py         # MongoDB History CRUD Operations
+│   └── database.py                # Async Motor MongoDB Connection
+└── tubeloom-frontend/             # React 19 + Vite Web Application
+    ├── vercel.json                # Single-Page Application Rewrite Rules
+    ├── package.json               # Frontend Dependencies & Build Scripts
+    ├── vite.config.js             # Vite Compiler Options
+    ├── index.html                 # Main Entry HTML & Web Font Imports
     ├── public/                    # Static Assets & Dynamic Favicons
     │   ├── favicon.svg            # Media-Query Adaptive SVG Favicon
-    │   ├── favicon-dark.svg       # Dark Mode Tab Favicon
-    │   └── favicon-light.svg      # Light Mode Tab Favicon
+    │   ├── favicon-dark.svg       # Dark Theme Favicon
+    │   └── favicon-light.svg      # Light Theme Favicon
     └── src/
         ├── main.jsx               # React Mount Point & GoogleOAuthProvider
-        ├── App.jsx                # Core App Component & Routing State
+        ├── App.jsx                # Application Root Component & Routing State
         ├── App.scss               # Main Layout Grid & Animations
         ├── index.css              # Design Tokens & CSS Reset
         ├── components/
-        │   ├── Header.jsx         # Header Navigation & Brand Logo
+        │   ├── Header.jsx         # Navigation Header & Brand Control
         │   ├── Header.scss        # Header Action Layout
-        │   ├── Auth.jsx           # Google Login & Profile Dropdown
-        │   ├── Auth.scss          # Profile Avatar & Dropdown Styles
-        │   ├── HistorySidebar.jsx # Sliding Drawer & History List Cards
+        │   ├── Auth.jsx           # Google Sign-In & Profile Menu
+        │   ├── Auth.scss          # Profile Avatar & Menu Styles
+        │   ├── HistorySidebar.jsx # Sliding Drawer & History Item Cards
         │   ├── HistorySidebar.scss# Glassmorphism Drawer & Shimmer Skeletons
-        │   ├── UrlForm.jsx        # YouTube URL Input Form
-        │   ├── UrlForm.scss       # Input Form Styles
+        │   ├── UrlForm.jsx        # YouTube URL Submission Form
+        │   ├── UrlForm.scss       # Submission Form Styles
         │   ├── LandingFeatures.jsx# Value Proposition Feature Showcase
-        │   ├── LandingFeatures.scss# Feature Grid Styles
-        │   ├── VideoPlayer.jsx    # Responsive Embedded YouTube Player
-        │   ├── VideoPlayer.scss   # 16:9 Aspect Ratio Frame & Glow
+        │   ├── LandingFeatures.scss# Feature Grid Layout
+        │   ├── VideoPlayer.jsx    # Responsive YouTube Video Embed
+        │   ├── VideoPlayer.scss   # Video Container Aspect Ratio & Glow
         │   ├── SummaryPanel.jsx   # Executive Summary & Takeaways List
-        │   ├── SummaryPanel.scss  # Summary Card Typography
-        │   ├── ChatPanel.jsx      # Video Q&A Chat Section
-        │   ├── ChatPanel.scss     # Chat Bubbles & Shimmer Loading Bar
-        │   ├── FormattedText.jsx  # Markdown / Bullet Renderer
-        │   └── FormattedText.scss # Text Formatting Styles
+        │   ├── SummaryPanel.scss  # Summary Typography & Spacing
+        │   ├── ChatPanel.jsx      # Video Q&A Interactive Panel
+        │   ├── ChatPanel.scss     # Chat Bubbles & Loading State
+        │   ├── FormattedText.jsx  # Markdown and Text Formatting Renderer
+        │   └── FormattedText.scss # Formatted Text Styles
         └── services/
-            ├── api.js             # Axios API Client for Processing & History
-            └── authService.js     # Auth API Client & Local Storage Session
+            ├── api.js             # Axios API Service for Summaries & History
+            └── authService.js     # Auth API Client & Local Session Management
 ```
 
 ---
 
-## 🗄️ Database Schemas (MongoDB Atlas)
+## Data Models (MongoDB Atlas)
 
 Database Name: `tubeloom_db`
 
 ### 1. `user` Collection
-Stores user profiles authenticated via Google OAuth.
+Stores user account profiles authenticated via Google OAuth.
 
 ```json
 {
@@ -139,7 +145,7 @@ Stores user profiles authenticated via Google OAuth.
 ```
 
 ### 2. `history` Collection
-Stores video summaries linked to registered users.
+Stores summary entries linked to registered user accounts.
 
 ```json
 {
@@ -148,26 +154,26 @@ Stores video summaries linked to registered users.
   "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   "video_id": "dQw4w9WgXcQ",
   "title": "Executive Summary Title",
-  "executive_summary": "Comprehensive 2-sentence summary of the video content...",
+  "executive_summary": "Structured summary of the video transcript...",
   "created_at": ISODate("2026-08-20T21:05:00Z")
 }
 ```
 
 ---
 
-## ✨ Key Features
+## Core Capabilities
 
-- ⚡ **Instant AI Summarization**: Extracts YouTube transcripts and generates structured executive notes using Gemini 3.6 Flash.
-- 💬 **Context-Aware Video Q&A**: Ask any question about the video and get precise answers grounded strictly in transcript context.
-- 🔐 **Google Single Sign-On**: Seamless OAuth authentication with local session persistence and user avatar dropdown menu.
-- 📜 **Personalized History Sidebar**: Sliding drawer listing previously summarized videos with thumbnails, creation timestamps, instant reload, and item deletion.
-- 🌓 **Dynamic Design & Favicon**: Dark/Light mode with View Transitions API and real-time SVG favicon switching.
-- 📱 **Mobile-First Responsiveness**: Tailored layout for mobile, tablet, and desktop viewports.
-- 🔄 **Browser History Navigation**: Full `popstate` browser back-button routing to navigate back to the home view effortlessly.
+- **Automated Summarization**: Extracts transcripts via `youtube-transcript-api` and generates structured executive notes using Gemini 3.6 Flash.
+- **Context-Grounded Q&A**: Answers questions about the video content based strictly on transcript data.
+- **Google OAuth Authentication**: Secure Google single sign-on with token verification and persistent local user session management.
+- **Personalized History Sidebar**: Sliding drawer displaying user history cards with video thumbnails, creation dates, quick item loading, and deletion.
+- **Dynamic Theme & Adaptive Favicons**: Dark/Light mode support with View Transitions API and real-time SVG favicon switching.
+- **Mobile-First Layout**: Fully responsive CSS Grid and Flexbox layouts optimized for mobile, tablet, and desktop viewports.
+- **Browser History Integration**: Integrated `popstate` browser back-button routing to return to the landing view smoothly.
 
 ---
 
-## 🔑 Environment Variables
+## Environment Configuration
 
 ### Frontend (`tubeloom-frontend/.env`)
 ```env
@@ -184,16 +190,16 @@ MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/
 
 ---
 
-## 🚀 Getting Started
+## Local Development Setup
 
 ### 1. Prerequisites
 - **Node.js**: v18.0 or higher
 - **Python**: v3.10 or higher
-- **MongoDB Atlas Account**
+- **MongoDB Atlas Cluster**
 
 ### 2. Backend Setup
 ```bash
-# Navigate to backend directory
+# Change directory to backend
 cd tubeloom-backend
 
 # Create virtual environment
@@ -205,7 +211,7 @@ python -m venv venv
 # macOS/Linux:
 source venv/bin/activate
 
-# Install dependencies
+# Install required dependencies
 pip install -r requirements.txt
 
 # Start FastAPI development server
@@ -214,7 +220,7 @@ uvicorn main:app --reload --port 8000
 
 ### 3. Frontend Setup
 ```bash
-# Navigate to frontend directory
+# Change directory to frontend
 cd tubeloom-frontend
 
 # Install dependencies
@@ -228,26 +234,30 @@ Open `http://localhost:5173` in your browser.
 
 ---
 
-## 🌐 Deployment Guide
+## Deployment Instructions
 
 ### Deploying Frontend to Vercel
-1. Import repository to Vercel and select root directory `tubeloom-frontend`.
-2. Add Environment Variables:
+1. Import the repository into Vercel and select the root directory `tubeloom-frontend`.
+2. Configure Environment Variables:
    - `VITE_GOOGLE_CLIENT_ID`: Your Google OAuth Client ID
-   - `VITE_API_BASE_URL`: Your deployed FastAPI backend URL
-3. Add Custom Domain in Project Settings -> Domains.
-4. Add custom domain URL to **Authorized JavaScript Origins** in Google Cloud Console.
+   - `VITE_API_BASE_URL`: Your live backend API URL
+3. Add your custom domain under **Project Settings** -> **Domains**.
+4. Register your domain under **Authorized JavaScript Origins** in Google Cloud Console.
 
 ### Deploying Backend to Render / Railway
-1. Create Web Service pointing to `tubeloom-backend`.
-2. Build Command: `pip install -r requirements.txt`.
-3. Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`.
+1. Create a new Web Service pointing to `tubeloom-backend`.
+2. Build Command: `pip install -r requirements.txt`
+3. Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 4. Configure Environment Variables (`GEMINI_API_KEY`, `GOOGLE_CLIENT_ID`, `MONGO_URI`).
 
 ---
 
 <div align="center">
 
+<<<<<<< HEAD
 Crafted with precision for **TubeLoom AI By Vineet Dwivedi** 
+=======
+Developed for **TubeLoom AI**
+>>>>>>> eb4123f (New ft. addon)
 
 </div>
