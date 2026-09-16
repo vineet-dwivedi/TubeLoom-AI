@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, HttpUrl
 
 from auth_service import verify_google_id_token
-from history_service import save_video_history, get_user_history, delete_user_history_item
+from history_service import save_video_history, get_user_history, delete_user_history_item, update_user_notes
 from youtube_service import extract_video_id, fetch_transcript_text
 from ai_service import (
     generate_summary, 
@@ -45,6 +45,9 @@ class ChatRequest(BaseModel):
     url: HttpUrl
     question: str
 
+class NoteSaveRequest(BaseModel):
+    history_id: str
+    notes: str
 
 # 2. Authentication Endpoint
 @app.post("/api/auth/google")
@@ -113,3 +116,11 @@ async def video_chat(request: ChatRequest):
         return answer
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to get answer: {str(e)}")
+
+# 6. Update User Notes Endpoint
+@app.put("/api/notes/save")
+async def save_notes(request: NoteSaveRequest):
+    try:
+        return await update_user_notes(request.history_id, request.notes)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to update notes: {str(e)}")
