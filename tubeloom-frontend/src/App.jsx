@@ -9,6 +9,7 @@ import VideoPlayer from "./components/VideoPlayer";
 import SummaryPanel from "./components/SummaryPanel";
 import ChatPanel from "./components/ChatPanel";
 import HistorySidebar from "./components/HistorySidebar";
+import NotesExporter from "./components/NotesExporter";
 
 import "./App.scss";
 import { googleLogout } from "@react-oauth/google";
@@ -259,6 +260,10 @@ export default function App() {
               onAsk={handleAsk}
             />
           </div>
+          <NotesExporter 
+            videoTitle={summary.title_suggestion || "YouTube Video Summary"} 
+            summaryData={summary}
+          />
         </div>
       )}
     </div>
